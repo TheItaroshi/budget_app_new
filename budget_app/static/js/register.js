@@ -1,12 +1,16 @@
 console.log("register is working")
+
 const  usernameField=document.querySelector('#usernameField')
 const  emailField=document.querySelector('#emailField')
 const  passwordField=document.querySelector('#passwordField')
 const  showPasswordToggle=document.querySelector('.showPasswordToggle')
+const  submitBtn=document.querySelector('.submit-btn')
+
+submitBtn.disabled = true;
 
 usernameField.addEventListener('keyup', (e)=> {
     const usernameVal = e.target.value;
-    console.log('UsernameVal', usernameVal)
+    console.log('UsernameVal', usernameVal);
 
     if(usernameVal.length > 0)
     fetch('/authentication/validate-username', {
@@ -15,12 +19,14 @@ usernameField.addEventListener('keyup', (e)=> {
     }).then(res => res.json()).then(data => {
         console.log('data', data)
         if(data.username_error){
-            usernameField.classList.remove('is-valid')
-            usernameField.classList.add('is-invalid')
+            submitBtn.disabled = true;
+            usernameField.classList.remove('is-valid');
+            usernameField.classList.add('is-invalid');
         }
         else {
-            usernameField.classList.remove('is-invalid')
-            usernameField.classList.add('is-valid')
+            submitBtn.removeAttribute('disabled')
+            usernameField.classList.remove('is-invalid');
+            usernameField.classList.add('is-valid');
         }
     })
 })
@@ -36,12 +42,14 @@ emailField.addEventListener('keyup', (e)=> {
     }).then(res => res.json()).then(data => {
         console.log('data', data)
         if(data.email_error){
-            emailField.classList.remove('is-valid')
-            emailField.classList.add('is-invalid')
+            submitBtn.disabled = true;
+            emailField.classList.remove('is-valid');
+            emailField.classList.add('is-invalid');
         }
         else {
-            emailField.classList.remove('is-invalid')
-            emailField.classList.add('is-valid')
+            submitBtn.removeAttribute('disabled');
+            emailField.classList.remove('is-invalid');
+            emailField.classList.add('is-valid');
         }
     })
 })

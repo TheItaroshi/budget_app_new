@@ -14,22 +14,22 @@
                     {% include 'partials/_messages.html' %}
                     <div class="form-group py-2">
                         <input type="text" name="username" id="usernameField" class="form-control form-control-sm"
-                               placeholder="Username"/>
+                               placeholder="Username"/ value="{{ fieldValues.username }}">
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field with alphanumerics.</div>
                     </div>
                     <div class="form-group py-2">
                         <input type="email" name="email" id="emailField" class="form-control form-control-sm"
-                        placeholder="E-mail"/>
+                        placeholder="E-mail" value="{{ fieldValues.email }}"/>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field with correct email.</div>
                     </div>
                     <div class="form-group py-2">
                         <input type="password" name="password" id="passwordField" class="form-control form-control-sm"
-                        placeholder="Password"/>
+                        placeholder="Password" value="{{ fieldValues.password }}"/>
                         <small class="float-end py-2 showPasswordToggle">SHOW</small>
                     </div>
-                    <input type="submit" value="Register" class="btn btn-block btn-primary">
+                    <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn">
                 </form>
             </div>
 

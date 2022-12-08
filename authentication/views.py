@@ -37,11 +37,26 @@ class RegistrationView(View):
         return render(request, 'authentication/register.html')
 
     def post(self, request):
-        messages.success(request, "Success registration")
-        messages.warning(request, "Warning in registration")
-        messages.info(request, "Info in registration")
-        messages.error(request, "Error registration")
+        # messages.success(request, "Success registration")
+        # messages.warning(request, "Warning in registration")
+        # messages.info(request, "Info in registration")
+        # messages.error(request, "Error registration")
 
+        # Get data from form and keep them in fields
+        username, email, password = request.POST['username'], request.POST['email'], request.POST['password']
+        context = {
+            'fieldValues': request.POST
+        }
+
+        # Validate user data
+        if not User.objects.filter(username=username).exists():
+            if not User.objects.filter(email=email).exists():
+                if len(password) < 6:
+                    messages.error(request, "Password should be at least 7 characters")
+                    return render(request, 'authentication/register.html', context=context)
+                user = User.objects.create_user(username=username, email=email, password=password)
+                user.save()
+                messages.success(request, "Account successfully created")
         return render(request, 'authentication/register.html')
 
 class LoginView(View):

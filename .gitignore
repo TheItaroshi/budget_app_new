@@ -3,3 +3,5 @@ budget_app/__pycache__/
 budgetter/__pycache__/
 budgetter/migrations/__pycache__/
 db.sqlite3
+__pycache__/
+*/__pycache__/*
