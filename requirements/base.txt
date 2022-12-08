@@ -1,3 +1,5 @@
 django
 firebase_admin
 validate_email
+python-dotenv
+six
