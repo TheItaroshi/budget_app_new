@@ -1,9 +1,11 @@
 console.log("register is working")
 const  usernameField=document.querySelector('#usernameField')
 const  emailField=document.querySelector('#emailField')
+const  passwordField=document.querySelector('#passwordField')
+const  showPasswordToggle=document.querySelector('.showPasswordToggle')
 
-usernameField.addEventListener('keyup', (event)=> {
-    const usernameVal = event.target.value;
+usernameField.addEventListener('keyup', (e)=> {
+    const usernameVal = e.target.value;
     console.log('UsernameVal', usernameVal)
 
     if(usernameVal.length > 0)
@@ -23,8 +25,8 @@ usernameField.addEventListener('keyup', (event)=> {
     })
 })
 
-emailField.addEventListener('keyup', (event)=> {
-    const emailVal = event.target.value;
+emailField.addEventListener('keyup', (e)=> {
+    const emailVal = e.target.value;
     console.log('EmailVal', emailVal)
 
     if(emailVal.length > 0)
@@ -43,3 +45,15 @@ emailField.addEventListener('keyup', (event)=> {
         }
     })
 })
+
+handleToggleInput = (e) => {
+    if(showPasswordToggle.textContent === "SHOW"){
+        showPasswordToggle.textContent = "HIDE";
+        passwordField.setAttribute("type", "text")
+    }
+    else {
+        showPasswordToggle.textContent = "SHOW";
+        passwordField.setAttribute("type", "password")
+    }
+}
+showPasswordToggle.addEventListener('click', handleToggleInput)

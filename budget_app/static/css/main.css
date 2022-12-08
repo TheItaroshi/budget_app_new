@@ -48,3 +48,11 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+
+.showPasswordToggle{
+    transition: all;
+    cursor: pointer;
+}
+.showPasswordToggle:hover{
+    transform: scale(1.2);
+}
